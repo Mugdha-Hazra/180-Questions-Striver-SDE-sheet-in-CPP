@@ -31,3 +31,11 @@ cout<<"\n";
 cout<<funu<double>(b,n);
 return 0;
 }
+/*  output:
+3
+1 2 3 
+12.3 4.5 6.7 
+sol:
+2
+0
+*/
