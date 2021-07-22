@@ -31,7 +31,17 @@ Constraints:
 1 ≤ Arr[i] ≤ N
 */
 
+/*
+approach
+----------
+We will use the hash table concept 
+like we'll define an array on n elements and initilize it with 0 and 
+then traverse the given list once we get an element we will increment the value in that index of the new array we'll increment the new array by 1.
+then at the end we'll again traverse the new array if we get any a[i]=0 that means that is the missing element 
+and any a[i]=2 that means  that is the repeated element.
 
+time: O(n) space: O(n)
+*/
 #include <bits/stdc++.h>
 
 using namespace std;
