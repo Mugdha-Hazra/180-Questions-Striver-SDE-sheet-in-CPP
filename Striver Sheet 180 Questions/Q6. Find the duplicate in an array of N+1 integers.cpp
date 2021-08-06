@@ -32,8 +32,19 @@ nums.length == n + 1
 1 <= nums[i] <= n
 All the integers in nums appear only once except for precisely one integer which appears two or more times.
 */
+/*
+solution approach
+------------------
+step1. we'll take a variable t and initilize it with 0
+step2. we'll iterate through all the elements and make another variable idx
+step3. for every i we'll initilize idx variable with the absolute value of a[i]
+step4. now we'll check if the a[idx]<0
+         that means the index has already been visited and then we'll break the iteration and save the idx value in t 
+step5. if it is not the case then we'll go to the a[idx] index and make it negative
+step6. since the question wantend not to modify the elements so we'll just itreate through all the elements of the array and make it positive
+step7. return the t
 
-
+*/
 class Solution {
 public:
     int findDuplicate(vector<int>& a) 
