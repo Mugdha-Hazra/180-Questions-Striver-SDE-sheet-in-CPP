@@ -31,6 +31,13 @@ A simple improvement uses O(m + n) space, but still not the best solution.
 Could you devise a constant space solution?
 */
 
+/*
+My approach
+--------------
+time complexity: O(N*M + N*M)
+space complexity: O(N)+O(M)
+*/
+
 class Solution {
 public:
     void setZeroes(vector<vector<int>>& mat) {
