@@ -30,6 +30,20 @@ Constraints:
 1 <= nums.length <= 100
 0 <= nums[i] <= 100
 */
+/* MY Approach
+-----------------
+                 > you can also use c++ stl for finding the solution
+                 the function is -> next_permutation(num.begin(),num.end())
+                 where num is the name of the vector.
+                 > else, use the traditional method
+                        > iterate the given array from the end till you dont find any element 
+                           whose after num is greater than the current number.
+                        > if there is no such element then simply reverse the elements
+                        > else again traverse the array from the end till k
+                        > and search for an element which is greater than nums[k]
+                        > and then swap it withthe number n[k]
+                        >then reverse from there till end
+*/
 class Solution {
 public:
     void nextPermutation(vector<int>& nums) {
