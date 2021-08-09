@@ -1,3 +1,8 @@
+/*
+My Approach
+            > and the number it it gets the resultant
+            > multiply it till it get 0 or 1.
+*/
 class Solution {
 public:
     double myPow(double x, int n) {
