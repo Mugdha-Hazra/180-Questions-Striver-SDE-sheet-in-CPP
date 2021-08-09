@@ -20,6 +20,18 @@ Constraints:
 
 1 <= numRows <= 30
 */
+/*
+my Approach
+-------------
+                  > Make a dummy vector of vector (matrix) for storing  the resultant ans named ("Ans")
+                    of the size no of row the pascal triangle wanted to be.
+                  > use a for loop and every time increase a rowof the matrix
+                  > assign the 1st and last values as 1.
+                  > rest all the numbers are the sum of the previous two terms of the of the previous row.
+                  > at the end return the resultant matrix.
+                
+     
+*/
 class Solution {
 public:
     vector<vector<int>> generate(int numRows) 
