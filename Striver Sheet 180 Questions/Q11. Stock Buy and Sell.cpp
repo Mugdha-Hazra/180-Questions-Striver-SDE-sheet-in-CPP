@@ -25,6 +25,15 @@ Constraints:
 1 <= prices.length <= 105
 0 <= prices[i] <= 104
 */
+
+/*
+My Approach
+--------------
+             > set profit to zero  and min element as max it
+             > then iterate through the array and check if any element is less than the current element set that as min element
+             > check for profit if we are getting more profit than the current then set that as the new profit
+             > ones the iteration is done return the profit
+*/
 class Solution {
 public:
     int maxProfit(vector<int>& arr) 
