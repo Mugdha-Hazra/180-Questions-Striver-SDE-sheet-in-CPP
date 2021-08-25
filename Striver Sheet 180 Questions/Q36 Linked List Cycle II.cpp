@@ -6,6 +6,11 @@
  *     ListNode(int x) : val(x), next(NULL) {}
  * };
  */
+/*
+ My approach
+            >using fast and slow pointer find the intersection point of fast and slow
+            >after make a dummy pointer and slow pointer start moving it from front till it collide with slow 
+*/
 class Solution {
 public:
     ListNode *detectCycle(ListNode *head) 
