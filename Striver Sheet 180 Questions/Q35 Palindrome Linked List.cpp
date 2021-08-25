@@ -8,6 +8,15 @@
  *     ListNode(int x, ListNode *next) : val(x), next(next) {}
  * };
  */
+
+/*
+approach
+                 >using fast and slow pointer we'll find the mid point of the linklist
+		 >move slow pointer one step forward
+		 >make a new temp pointer and start it from the head
+		 >check for both slow and temp
+		 >retrun true or false accordingly
+*/
 class Solution {
 public:
     bool isPalindrome(ListNode* head) {
