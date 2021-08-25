@@ -8,6 +8,13 @@
  *     ListNode(int x, ListNode *next) : val(x), next(next) {}
  * };
  */
+/*
+        my approach:
+                   >make it a circular link list using last node next point to head
+                   >mark the no of nodes and breas the nth node.
+                   >
+                   >
+*/
 class Solution {
 public:
     ListNode* rotateRight(ListNode* head, int k) 
