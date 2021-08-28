@@ -1,4 +1,6 @@
-/*https://codeforces.com/problemset/problem/112/A
+/*
+
+https://codeforces.com/problemset/problem/112/A
 */
 #include <iostream>
 #include <cstdio>
