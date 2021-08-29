@@ -7,7 +7,7 @@ https://codeforces.com/problemset/problem/112/A
 #include<string.h>
 using namespace std;
 int main() 
-{char a[10000],b[10000],c,d;
+{char a[10000],b[10000],c,d;,./l
 int i,j;
 cin>>a;
 cin>>b;
