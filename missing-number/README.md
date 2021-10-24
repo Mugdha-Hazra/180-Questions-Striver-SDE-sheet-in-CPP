@@ -1,3 +1,4 @@
+[Discussion Post (created on 24/9/2021 at 22:47)](https://leetcode.com/problems/missing-number/discuss/1538799/c%2B%2B-3-line-soln-O(n))  
 <h2>268. Missing Number</h2><h3>Easy</h3><hr><div><p>Given an array <code>nums</code> containing <code>n</code> distinct numbers in the range <code>[0, n]</code>, return <em>the only number in the range that is missing from the array.</em></p>
 
 <p>&nbsp;</p>
