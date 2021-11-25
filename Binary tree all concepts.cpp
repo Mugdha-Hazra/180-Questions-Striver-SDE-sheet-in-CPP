@@ -117,6 +117,49 @@ public:
             }
         }
     }
+    //top view traversal
+    void topview(tree *root)
+    {
+        map<int, int> mp;
+        queue<pair<tree *, int>> q;
+        q.push({root, 0});
+        while (!q.empty())
+        {
+            auto temp = q.front();
+            q.pop();
+            int hd = temp.second;
+            auto node = temp.first;
+            if (mp.count(hd) == 0)
+                mp[hd] = node->value;
+            if (node->left)
+                q.push({node->left, hd - 1});
+            if (node->right)
+                q.push({node->right, hd + 1});
+        }
+        for (auto i : mp)
+            cout << i.second << ": ";
+    }
+    // bottomview traversals
+    void bottomview(tree *root)
+    {
+        map<int, int> mp;
+        queue<pair<tree *, int>> q;
+        q.push({root, 0});
+        while (!q.empty())
+        {
+            auto temp = q.front();
+            q.pop();
+            int hd = temp.second;
+            auto node = temp.first;
+            mp[hd] = node->value;
+            if (node->left)
+                q.push({node->left, hd - 1});
+            if (node->right)
+                q.push({node->right, hd + 1});
+        }
+        for (auto i : mp)
+            cout << i.second << ": ";
+    }
 };
 
 int main()
@@ -143,6 +186,9 @@ int main()
     root->leftview(root);
     cout << "\nright view Traversal ( each last element of Level wise) : ";
     root->rightview(root);
-
+    cout << "\ntop view Traversal ( top view ) : ";
+    root->topview(root);
+    cout << "\nbottom view Traversal ( bottom view ) : ";
+    root->bottomview(root);
     return 0;
 }
