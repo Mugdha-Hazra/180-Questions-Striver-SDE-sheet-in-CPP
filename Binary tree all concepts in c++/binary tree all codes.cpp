@@ -27,8 +27,8 @@ public:
         return root;
     }
 
-    //tree traversals
-    //inorder traversal
+    // tree traversals
+    // inorder traversal
     void inorder(tree *root)
     {
         if (root == NULL)
@@ -37,7 +37,7 @@ public:
         cout << root->value << ": ";
         inorder(root->right);
     }
-    //preorder traversals
+    // preorder traversals
     void preorder(tree *root)
     {
         if (root == NULL)
@@ -46,7 +46,7 @@ public:
         preorder(root->left);
         preorder(root->right);
     }
-    //postorder traversals
+    // postorder traversals
     void postorder(tree *root)
     {
         if (root == NULL)
@@ -55,7 +55,7 @@ public:
         postorder(root->right);
         cout << root->value << ": ";
     }
-    //level order traversals
+    // level order traversals
     void levelorder(tree *root)
     {
         queue<tree *> q;
@@ -71,7 +71,7 @@ public:
                 q.push(temp->right);
         }
     }
-    //left viewof a binary tree
+    // left viewof a binary tree
     void leftview(tree *root)
     {
         queue<tree *> q;
@@ -94,7 +94,7 @@ public:
             }
         }
     }
-    //right view traversal
+    // right view traversal
     void rightview(tree *root)
     {
         queue<tree *> q;
@@ -117,7 +117,7 @@ public:
             }
         }
     }
-    //top view traversal
+    // top view traversal
     void topview(tree *root)
     {
         map<int, int> mp;
@@ -160,6 +160,25 @@ public:
         for (auto i : mp)
             cout << i.second << ": ";
     }
+    // maximum height of a tree
+
+    ll maxDepth(tree *root)
+    {
+        if (root == NULL)
+            return 0;
+        return 1 + max(maxDepth(root->left), maxDepth(root->right));
+    }
+    // conversion of sorted array to height balanced bst.
+    tree *array_to_bst(ll *a, int s, int e)
+    {
+        if (s > e)
+            return NULL;
+        ll m = (s + e) / 2;
+        tree *root = new tree(a[m]);
+        root->left = array_to_bst(a, s, m - 1);
+        root->right = array_to_bst(a, m + 1, e);
+        return root;
+    }
 };
 
 int main()
@@ -190,5 +209,19 @@ int main()
     root->topview(root);
     cout << "\nbottom view Traversal ( bottom view ) : ";
     root->bottomview(root);
+    cout << "\nHeight of binary tree :" << root->maxDepth(root);
+    cout << "\nArray to Bst: ";
+    ll a[] = {
+        1,
+        23,
+        50,
+        66,
+        78,
+        89,
+        90,
+        100,
+    };
+    tree *root1 = NULL;
+    root1 = root1->array_to_bst(a, 0, 7);
     return 0;
 }
