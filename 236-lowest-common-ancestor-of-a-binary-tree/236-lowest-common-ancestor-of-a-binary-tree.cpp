@@ -8,21 +8,15 @@
  * };
  */
 class Solution {
-   TreeNode* res;
-   int rec(TreeNode* root,TreeNode* p,TreeNode* q){
-        if(!root)return 0;
-        int x=0;
-        if(root==p||root==q)x++;
-        if(rec(root->left,p,q))x++;
-        if(rec(root->right,p,q))x++;
-        if(x==2)res=root;
-        if(root->left==p||root->right==p)x++;
-        if(root->right==q||root->left==q)x++;
-        return x;
-    }
 public:
-    TreeNode* lowestCommonAncestor(TreeNode* root, TreeNode* p, TreeNode* q) {
-        rec(root,p,q);
-        return res;
+    TreeNode* lowestCommonAncestor(TreeNode* root, TreeNode* p, TreeNode* q)
+    {
+        if(root==NULL||root==p||root==q) return root;
+        TreeNode *left=lowestCommonAncestor(root->left,p,q);
+        TreeNode *right=lowestCommonAncestor(root->right,p,q);
+            if(left==NULL) return right;
+        else if(right==NULL) return left;
+        else return root;
+        
     }
 };
