@@ -1,40 +1,69 @@
-/**
- * Definition for a binary tree node.
- * struct TreeNode {
- *     int val;
- *     TreeNode *left;
- *     TreeNode *right;
- *     TreeNode() : val(0), left(nullptr), right(nullptr) {}
- *     TreeNode(int x) : val(x), left(nullptr), right(nullptr) {}
- *     TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left), right(right) {}
- * };
- */
+/*
+// TC - O(N) 
+// SC - O(N)
 class Solution {
-  TreeNode* prev=nullptr; 
+    TreeNode* prev = NULL;
 public:
-    void flatten(TreeNode* root){
-        preorder(root);
-      
+    void flatten(TreeNode* root) {
+        if(root == NULL) return; 
+        
+        flatten(root->right); 
+        flatten(root->left); 
+        
+        root->right = prev;
+        root->left = NULL; 
+        prev = root; 
     }
-     
-  void preorder(TreeNode* root){
-    
-    if(!root)
-      return;
-  
-    TreeNode* l=root->left;
-    TreeNode* r=root->right;
-    
-    if(prev==nullptr)
-       prev=root;
-    else{
-      prev->right=root;
-      prev->left=nullptr;
-      prev=root;
+};
+
+// TC - O(N) 
+// SC - O(N) 
+// Iterative 
+class Solution {
+public:
+    void flatten(TreeNode* root) {
+        if(root == NULL) return; 
+        stack<TreeNode*> st; 
+        st.push(root); 
+        while(!st.empty()) {
+            TreeNode* cur = st.top(); 
+            st.pop(); 
+            
+            if(cur->right != NULL) {
+                st.push(cur->right); 
+            }
+            if(cur->left != NULL) {
+                st.push(cur->left); 
+            }
+            if(!st.empty()) {
+                cur->right = st.top(); 
+            }
+            cur->left = NULL;
+        }
+        
     }
-    
-     preorder(l);
-    preorder(r);
-    
+};*/
+
+// TC - O(N) 
+// SC - O(1) 
+class Solution {
+public:
+    void flatten(TreeNode* root) {
+        TreeNode* cur = root;
+		while (cur)
+		{
+			if(cur->left)
+			{
+				TreeNode* pre = cur->left;
+				while(pre->right)
+				{
+					pre = pre->right;
+				}
+				pre->right = cur->right;
+				cur->right = cur->left;
+				cur->left = NULL;
+			}
+			cur = cur->right;
+		}
     }
 };
