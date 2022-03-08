@@ -11,7 +11,7 @@ public:
         {
             int maxPrev = currMax ;
             
-            currMax = max(nums[i], max(currMax*nums[i],currMin*nums[i]) ) ;
+            currMax = max(nums[i], max(currMax*nums[i] ,currMin*nums[i]) ) ;
             
             
             currMin = min(nums[i], min(maxPrev*nums[i], currMin*nums[i]) );
