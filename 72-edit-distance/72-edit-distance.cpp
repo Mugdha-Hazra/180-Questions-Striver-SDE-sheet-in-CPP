@@ -1,32 +1,32 @@
 class Solution {
 public:
     int minDistance(string word1, string word2) {
-        int m = word1.size();
-        int n = word2.size();
-    
-        vector<vector<int>> dp(m+1,vector<int>(n+1));
-        //1st row
-        for(int j=0; j<=n; ++j){
-            dp[0][j] = j;
+        int n = word1.length(), m = word2.length();
+		
+		//Declaring two vectors to store the previous and the current state
+        vector<int>prev(m+1), curr(m+1);
+        
+		//In the case where one string is null, then it will require insertions of length(other string)
+        for(int i = 1; i <= m; i++)
+            prev[i] = i;
+        
+		
+        for(int i = 1;i <= n; i++){
+			//curr[0] = i sets the first element of ith row as i(same reason as above)
+            curr[0] = i;
+            for(int j = 1;j <= m; j++)
+			
+				/** If word1[i-1] == word2[j-1], i.e., if the current characters of both words match, 
+				then no need of any change, so curr[j] = prev[j-1].*/
+				/** Else, we can either delete, insert, or change the character of word1, which 
+				requires 1 step more than the minnimum of all the three operations possible. */
+				
+                curr[j] = (word1[i-1] == word2[j-1])? prev[j-1] : min(curr[j-1], min(prev[j], prev[j-1])) + 1;     
+				
+			//Swapping the prev and curr states so that current state becomes the prev state
+			//for next iteration.
+            prev.swap(curr);
         }
-        //1st col
-        for(int i=1;i<=m;++i){
-            dp[i][0] = i;
-        }
-        for(int i=1; i<=m; ++i){
-            for(int j=1; j<=n; ++j){
-                if(word1[m-i] == word2[n-j]){
-                    dp[i][j] = dp[i-1][j-1];
-                }
-                else{
-                    int a = dp[i-1][j];
-                    int b = dp[i][j-1];
-                    int c = dp[i-1][j-1];
-                    dp[i][j] = 1 + min(a,min(b,c));
-                }
-            }
-        }
-        return dp[m][n];
+        return prev[m];
     }
-
 };
