@@ -9,8 +9,8 @@ public:
             c*=n[i];
             v.push_back(c);
         }
-        for(auto x:v)
-            cout<<"*"<<x<<"\t";
+        // for(auto x:v)
+        //     cout<<"*"<<x<<"\t";
         vector<int>k;
         int m=1;
         for(int i=n.size()-1;i>-1;i--)
@@ -19,8 +19,8 @@ public:
             k.push_back(m);
         }
         reverse(k.begin(),k.end());
-        for(auto x:k)
-            cout<<"*"<<x<<"\t";
+        // for(auto x:k)
+        //     cout<<"*"<<x<<"\t";
          vector<int>g;
         int l=1;
         for(int i=0;i<n.size();i++)
