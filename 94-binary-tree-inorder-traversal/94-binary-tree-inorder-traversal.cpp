@@ -9,17 +9,29 @@
  *     TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left), right(right) {}
  * };
  */
+//morris method
 class Solution {
 public:
     vector<int>v;
     vector<int> inorderTraversal(TreeNode* root) 
-    {
-        if(!root)return v;
-        inorderTraversal(root->left);
-        v.push_back(root->val);
-        inorderTraversal(root->right);
+    {if(!root)return v;
+        TreeNode*curr=root;
+        while(curr)
+        {
+            if(curr->left)
+            {
+                TreeNode*temp=curr->left;
+                TreeNode*leftpointer=curr->left;
+                while(temp->right)
+                temp=temp->right;
+               temp->right=curr;
+                curr->left=NULL;
+                curr=leftpointer;
+            }
+            else{
+                v.push_back(curr->val);curr=curr->right;
+            }
+        }
         return v;
-            
-        
-    }
+     }
 };
