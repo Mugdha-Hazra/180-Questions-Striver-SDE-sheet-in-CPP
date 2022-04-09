@@ -1,53 +1,38 @@
 class Solution {
 public:
-    void setZeroes(vector<vector<int>>& m) 
-    {
-        int r=m.size(),c=m[0].size(),ra[r],ca[c];
-        for(int i=0;i<r;i++)
-            ra[i]=0;
-        for(int i=0;i<c;i++)
-            ca[i]=0;
-        
-        for(int i=0;i<r;i++)
-        {   int k=0;
-            for(int j=0;j<c;j++)
-            {
-                if(m[i][j]==0)
-                {
-                    k=1;
+    void setZeroes(vector<vector<int>>& matrix) {
+        bool isZeroCol = false;
+        bool isZeroRow = false;
+        for (int i = 0; i < matrix.size(); i++) { //check the first column
+            if (matrix[i][0] == 0) {
+                isZeroCol = true;
+                break;
+            } 
+        }
+        for (int i = 0; i < matrix[0].size(); i++) { //check the first row
+            if (matrix[0][i] == 0) {
+                isZeroRow = true;
+                break;
+            } 
+        }
+        for (int i = 1; i < matrix.size(); i++) { //check except the first row and column
+            for (int j = 1; j < matrix[0].size(); j++) 
+                if (matrix[i][j] == 0) {
+                    matrix[i][0] = 0;
+                    matrix[0][j] = 0;
                 }
-                    
-            }
-         ra[i]=k;
         }
-        for(int j=0;j<c;j++)
-        {   int k=0;
-            for(int i=0;i<r;i++)
-            {
-                if(m[i][j]==0)
-                {
-                    k=1;
-                }
-                    
-            }
-         ca[j]=k;
+        for (int i = 1; i < matrix.size(); i++) { //process except the first row and column
+           for (int j = 1; j < matrix[0].size(); j++) 
+               if (matrix[i][0] == 0 || matrix[0][j] == 0)
+                   matrix[i][j] = 0;
         }
-         for(int i=0;i<r;i++)
-        {  
-           if(ra[i]==1)
-           {
-               for(int j=0;j<c;j++)
-                   m[i][j]=0;
-           }
+        if (isZeroCol) { //handle the first column
+            for (int i = 0; i < matrix.size(); i++) 
+                matrix[i][0] = 0;
         }
-        for(int j=0;j<c;j++)
-        {  
-           if(ca[j]==1)
-           {
-               for(int i=0;i<r;i++)
-                   m[i][j]=0;
-           }
-        }
-        
-    }
+        if (isZeroRow) { //handle the first row
+            for (int i = 0; i < matrix[0].size(); i++) 
+                matrix[0][i] = 0;
+        }}
 };
