@@ -1,35 +1,52 @@
 class Solution {
 public:
-    void setZeroes(vector<vector<int>>&v) 
+    void setZeroes(vector<vector<int>>& m) 
     {
-        for(int i=0;i<v.size();i++)
-        {
-            for(int j=0;j<v[0].size();j++)
+        int r=m.size(),c=m[0].size(),ra[r],ca[c];
+        for(int i=0;i<r;i++)
+            ra[i]=0;
+        for(int i=0;i<c;i++)
+            ca[i]=0;
+        
+        for(int i=0;i<r;i++)
+        {   int k=0;
+            for(int j=0;j<c;j++)
             {
-                if(v[i][j]==0)
+                if(m[i][j]==0)
                 {
-                    for(int k=0;k<v[0].size();k++)
-                    {
-                        if(v[i][k]!=0)
-                            v[i][k]=-9990;
-                    }
-                    for(int k=0;k<v.size();k++)
-                    {
-                        if(v[k][j]!=0)
-                            v[k][j]=-9990;
-                    }
+                    k=1;
                 }
+                    
             }
+         ra[i]=k;
         }
-        for(int i=0;i<v.size();i++)
-        {
-            for(int j=0;j<v[0].size();j++)
+        for(int j=0;j<c;j++)
+        {   int k=0;
+            for(int i=0;i<r;i++)
             {
-                if(v[i][j]==-9990)
+                if(m[i][j]==0)
                 {
-                    v[i][j]=0;
+                    k=1;
                 }
+                    
             }
+         ca[j]=k;
+        }
+         for(int i=0;i<r;i++)
+        {  
+           if(ra[i]==1)
+           {
+               for(int j=0;j<c;j++)
+                   m[i][j]=0;
+           }
+        }
+        for(int j=0;j<c;j++)
+        {  
+           if(ca[j]==1)
+           {
+               for(int i=0;i<r;i++)
+                   m[i][j]=0;
+           }
         }
         
     }
