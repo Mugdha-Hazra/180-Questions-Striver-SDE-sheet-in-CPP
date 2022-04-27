@@ -4,7 +4,6 @@ public:
     {
         vector<vector<int>> triangle(numRows);
         triangle[0].push_back(1);
-
         for(int i=1; i< numRows; i++){
             triangle[i].push_back(1);
             for( int j = 1; j < i; j++){
