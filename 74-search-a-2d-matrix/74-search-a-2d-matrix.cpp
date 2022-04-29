@@ -9,6 +9,7 @@ public:
                 l = mid + 1;
             else 
                 h = mid;
-        }return mat[h/c][h%c] == t;
+        }
+        return mat[h/c][h%c] == t;
     }
 };
