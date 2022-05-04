@@ -1,30 +1,9 @@
 class Solution {
 public:
-    void merge(vector<int>& a, int m, vector<int>& b, int n) {
-        int i=0,j=0,k=0;
-        int c[200];
-        while(i<m && j<n)
-        {
-            if(a[i]<b[j])
-            {
-                c[k++]=a[i++];
-            }
-            else
-            {
-                c[k++]=b[j++];
-            }
-        }
-        for(;i<m;i++)
-        {
-            c[k++]=a[i];
-        }
-        for(;j<n;j++)
-        {
-            c[k++]=b[j];
-        }
-        for(i=0;i<m+n;i++)
-        {
-            a[i]=c[i];
+ void merge(vector<int>& n1, int m, vector<int>& n2, int n) {
+        int i = m-1, j =n-1, t = n+m-1;
+        while (j >=0){
+        ((i>=0 && n1[i] > n2[j]) ? n1[t--] = n1[i--] : n1[t--] = n2[j--]);  
         }
     }
-};
+};    
