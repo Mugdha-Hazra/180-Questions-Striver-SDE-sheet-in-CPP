@@ -1,50 +1,28 @@
 class Solution {
 public:
-    int minCost(int n, vector<int>& cuts) {
-        // T[i, j] cost from point i to point j
-        // T[i, j] = min(T[i, k] + T[k, j]) + m[j] - m[i]
+     int minCost(int n, vector<int>& cuts) {
+         
+        // just to get the length 
+        cuts.push_back(0);
+        cuts.push_back(n);
+         
         sort(cuts.begin(), cuts.end());
-        vector<int> arr(cuts.size() + 2);
-        arr[0] = 0;
-        arr[arr.size() - 1] = n;
-        for (int i=1; i < arr.size() - 1; ++i) {
-            arr[i] = cuts[i-1];
-        }
-        
-        
-        int m = arr.size();
-        vector<vector<int> > T(m, vector<int>(m, 0));
-        vector<vector<int> > C(m, vector<int>(m));
-        
-        // first diagnal
-        for (int i=0; i < m; ++i) C[i][i] = i;
-        
-        // second diagnal
-        for (int i=0; i < m-1; ++i) C[i][i+1] = i + 1;
-        
-        //cout << C[0][1] << ',' << C[1][2] << endl;
-        // third diagnal and above
-        // cout << arr.size() << endl;
-        for (int d=2; d < m; ++d) {
-            for (int i=0; i + d < m; ++i) {
-                int j = i + d;
+        int s = cuts.size();
+         
+        vector<vector<int>> dp(s, vector<int>(s,INT_MAX));
+         
+      
+        for (int gap = 0; gap <s; gap++) {
+            for (int i = 0 , j = gap ; i < s - gap; i++ , j++) {
+              
+                if(gap == 0) dp[i][i]=0;
+                if(gap ==1 ) dp[i][i+1]=0;
                 
-                // C[i][j-1] <= C[i][j] <= c[i+1][j]
-                T[i][j] = INT_MAX;
-                int w = arr[j] - arr[i];
-                // cout << w << endl;
-                for (int k = max(i+1, C[i][j-1]); k <= min(j-1, C[i+1][j]); ++k) {
-                    int cost = T[i][k] + T[k][j] + w;
-                    if (T[i][j] >= cost) {
-                        C[i][j] = k;
-                        T[i][j] = cost;
-                    }
+                for (int k = i + 1; k <j; k++) {   
+                    dp[i][j] = min(dp[i][j], dp[i][k] + dp[k][j] + cuts[j] - cuts[i]);
                 }
-                
-                //cout << i << ',' << j << ',' << T[i][j] << ',' << C[i][j] << endl;
             }
         }
-        
-        return T[0][m-1];
+        return dp[0][s - 1];
     }
 };
