@@ -8,8 +8,8 @@ public:
             int w0=count(strs[k].begin(), strs[k].end(), '0');
             int w1=strs[k].size()-w0;
             
-            for(int i=m; i-w0>=0; i--){
-                for(int j=n; j-w1>=0; j--){
+            for(int i=m; i>=w0; i--){
+                for(int j=n; j>=w1; j--){
                     dp[i][j]=max(dp[i][j], dp[i-w0][j-w1]+1);
                 }
             }
