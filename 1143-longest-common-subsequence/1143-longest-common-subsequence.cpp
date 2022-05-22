@@ -15,8 +15,11 @@ public:
             for(int j=1;j<n+1;j++){
                if(text1[i-1]==text2[j-1]){//if matching character
                   dp[i][j]= 1+dp[i-1][j-1];//add 1 to the diagonal element
-               }else{//if not matching
+                   continue;
+                 } 
+                if(text1[i-1]!=text2[j-1]){//if not matching
                    dp[i][j]=max(dp[i-1][j],dp[i][j-1]);//set max taking from left or top
+                   continue;
                } 
             }
         }
