@@ -13,11 +13,8 @@ public:
     ListNode* middleNode(ListNode* head)
     {
         ListNode *p=head,*q=head;
-        while(p->next)
-        {
-            p=p->next;
-            if(p->next)
-                p=p->next;
+        while(p!=NULL && p->next!=NULL)
+        {   p=p->next->next;
             q=q->next;
         }
         return q;
