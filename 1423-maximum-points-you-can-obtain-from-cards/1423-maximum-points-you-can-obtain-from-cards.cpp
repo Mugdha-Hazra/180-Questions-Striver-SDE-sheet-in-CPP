@@ -27,22 +27,18 @@
 // };
 class Solution {
 public:
-     
- 
-    int maxScore(vector<int>& v, int k){
-        
-        int totalSum=accumulate(v.begin(),v.end(),0);
-        k=v.size()-k;
-        int curr=0,sm=0;
-        for(int i=0;i<v.size();i++){
-            if(i<k) {curr+=v[i];sm=curr;}
-            else{
-                sm=sm-v[i-k]+v[i];
-                curr=min(curr,sm);
-                // cout<<i<<" "<<curr<<endl;
-            }
+    int maxScore(vector<int>& cardPoints, int k) {
+        ios::sync_with_stdio(false), cin.tie(nullptr), cout.tie(nullptr);
+        int frontScore = 0; 
+        for (int i=0; i<k; i++)
+            frontScore += cardPoints[i]; 
+        int ans = frontScore, ind = k-1, backScore = 0; 
+        for (int i=cardPoints.size()-1; i>=int(cardPoints.size())-k; i--){
+            if (ind>=0)
+                frontScore -= cardPoints[ind--]; 
+            backScore += cardPoints[i]; 
+            ans = max(ans, frontScore+backScore);
         }
-        // cout<<totalSum<<" "<<curr<<endl;
-        return totalSum-curr;
+        return ans;
     }
 };
