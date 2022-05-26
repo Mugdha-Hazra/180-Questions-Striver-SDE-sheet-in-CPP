@@ -1,45 +1,40 @@
-// class Solution {
-// public:
-//     int f(string s,int i,int n,int dp[])
-//     {
-//         // if(n<2) return n;
-//         // if(dp[i]!=-1)return dp[i];
-//         if(i>n)return 0;
-//         if(i==n)return 1;
-//         if(dp[i]!=-1)return dp[i];
-//         int a=0,b=0;
-//         if(s[i]!='0')
-//             a=f(s,i+1,n,dp);
-//         if(s[i]>'0' && (i+1)<n && (s[i]=='1' || (s[i]=='2' and s[i+1]<'7')))
-//             b=f(s,i+2,n,dp);
-//         return dp[i]=a+b;       
-//     }
-//     int numDecodings(string s) {
-//         int n=s.size()-1;
-//         int dp[1000]={-1};
-//         return f(s,0,n,dp);
-//     }
-// };
 class Solution {
-public:
-    int solve(string s,int n,vector<int>&dp,int i=0)
-    {
-        if(i>n)return 0;
-        if(i==n)return 1;
-        if(dp[i]!=-1)return dp[i];
-        int op1=0;
-        int op2=0;
-        
-        if(s[i]!='0')
-            op1=solve(s,n,dp,i+1);
-        if(s[i]>'0' and i+1<n and (s[i]=='1' or (s[i]=='2' and s[i+1]<='6')))
-            op2=solve(s,n,dp,i+2);
-        return dp[i]=op1+op2;
-            
-    }
+   public:
     int numDecodings(string s) {
-        int n=s.size();
-        vector<int> dp(n+1,-1);
-        return solve(s,n,dp);
+        if (s.empty()) {
+            return 0;
+        }
+        vector<int> dp(s.size(), 0);
+        if (s.substr(0, 1) == "0") {
+            return 0;
+        } else {
+            dp[0] = 1;
+        }
+        if (s.size() == 1) {
+            return dp[0];
+        }
+        if (s.substr(0, 2) <= "26" && s.substr(0, 2) >= "10" &&
+            s.substr(1, 1) <= "9" && s.substr(1, 1) >= "1") {
+            dp[1] = 2;
+        } else if (s.substr(0, 2) <= "26" && s.substr(0, 2) >= "10") {
+            dp[1] = 1;
+        } else if (s.substr(1, 1) <= "9" && s.substr(1, 1) >= "1") {
+            dp[1] = 1;
+        }
+
+        for (int i = 2; i < dp.size(); i++) {
+            if (s.substr(i - 1, 2) <= "26" && s.substr(i - 1, 2) >= "10" &&
+                s.substr(i, 1) <= "9" && s.substr(i, 1) >= "1") {
+                dp[i] = dp[i - 1] + dp[i - 2];
+            } else if (s.substr(i - 1, 2) <= "26" &&
+                       s.substr(i - 1, 2) >= "10") {
+                dp[i] = dp[i - 2];
+            } else if (s.substr(i, 1) <= "9" && s.substr(i, 1) >= "1") {
+                dp[i] = dp[i - 1];
+            } else {
+                return 0;
+            }
+        }
+        return dp.back();
     }
 };
