@@ -5,17 +5,16 @@ public:
         for(int i=0;i<c.size();i++)
         {
             if(c[i]=='G')
-                s+="G";
+                s=s+"G";
             else if(c[i]=='('&& c[i+1]==')')
-            {
-                 s+="o";
+            {    s=s+"o";
                  i=i+1;
             }
-                else 
-                { s+="al";
+            else 
+            { s=s+"al";
                   i=i+3;
-                }
             }
+        }
         
         return s;
     }
