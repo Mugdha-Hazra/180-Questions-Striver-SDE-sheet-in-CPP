@@ -11,11 +11,11 @@ public:
         int a[26]={0};
         for(int i=0;i<m.size();i++)
         {
-            a[m[i]-'a']=a[m[i]-'a']+1;
+            a[m[i]-'a']++;
         }
         for(int i=0;i<r.size();i++)
         {
-            a[r[i]-'a']=a[r[i]-'a']-1;
+            a[r[i]-'a']--;
             if(a[r[i]-'a']<0)
                 return false;
         }
