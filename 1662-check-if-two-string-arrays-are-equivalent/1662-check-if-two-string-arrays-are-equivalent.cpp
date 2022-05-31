@@ -4,9 +4,9 @@ public:
     {
         string a,b;
         for(int i=0;i<x.size();i++)
-            a+=x[i];
+            a=a+x[i];
         for(int i=0;i<y.size();i++)
-            b+=y[i];
+            b=b+y[i];
         if(a==b)
             return true;
         return false;
