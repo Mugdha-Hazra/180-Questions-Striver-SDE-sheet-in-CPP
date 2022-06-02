@@ -12,10 +12,6 @@ public:
             m=(l+h)/2;
             if(t==a[m])
                 return m;
-            else if(t==a[h])
-                return h;
-            else if(t==a[l])
-                return l;
             else if(t<a[m])
                 h=m-1;
             else if(t>a[m])
