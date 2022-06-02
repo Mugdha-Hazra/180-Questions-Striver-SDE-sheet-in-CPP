@@ -5,6 +5,8 @@ public:
         int l=0,h=n,m=0;
         if(t<a[0]||t>a[n])
             return -1;
+        if(t==a[l])return l;
+        if(t==a[h])return h;
         while(l<=h)
         {
             m=(l+h)/2;
