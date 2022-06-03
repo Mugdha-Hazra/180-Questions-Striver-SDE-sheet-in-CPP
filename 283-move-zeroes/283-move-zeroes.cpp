@@ -6,7 +6,7 @@ public:
        while(j<a.size())
         {
             if(a[j]==0)
-                j++;
+                j=j+1;
             else 
             {
              swap(a[i++],a[j++]); 
