@@ -5,7 +5,7 @@ public:
     {   int f=-1;
         for(int i=0;i<n.size();i++)
         {
-            n[i]*=n[i];
+            n[i]=pow(n[i],2);
         }
         stack<int>s;
         for(int i=0;i<n.size()-1;i++)
