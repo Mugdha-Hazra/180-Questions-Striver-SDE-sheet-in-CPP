@@ -14,8 +14,6 @@ public:
         vector<int>v(n,0);
         int c=0;
         dfs(0,v,r,c);
-        if(n==c)
-            return true;
-        return false;
+       return n==c;
     }
 };
