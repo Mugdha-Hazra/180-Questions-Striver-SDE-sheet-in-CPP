@@ -1,10 +1,46 @@
 class Solution {
 public:
-    vector<int> sortedSquares(vector<int>& n) {
-        vector<int>p;
-        for(auto x:n)
-        p.push_back(x*x);
-        sort(p.begin(),p.end());
-        return p;
+    vector<int> sortedSquares(vector<int>& n) 
+    {   int f=0;
+        for(int i=0;i<n.size();i++)
+        {
+            n[i]=pow(n[i],2);
+        }
+        stack<int>s;
+        for(int i=0;i<n.size()-1;i++)
+        {
+            if(n[i]>=n[i+1])
+            {
+                s.push(n[i]);
+            }
+            else
+            { f=i;
+                break;}
+        }
+     vector<int>v;
+        if(f!=0)
+        {
+            while(s.size()&&f<n.size())
+            {
+                if(n[f]<s.top())
+                    v.push_back(n[f++]);
+                else
+                { v.push_back(s.top());
+                s.pop();
+                }
+            }
+            while(s.size())
+            {
+                v.push_back(s.top());
+                s.pop();
+            }
+            while(f<n.size()){
+                 v.push_back(n[f++]);
+            }
+             return v;
+        }
+       // reverse(n.begin(),n.end());
+        sort(n.begin(),n.end());
+        return n;
     }
 };
