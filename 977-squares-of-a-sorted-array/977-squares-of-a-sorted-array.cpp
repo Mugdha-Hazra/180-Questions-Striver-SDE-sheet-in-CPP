@@ -4,17 +4,12 @@ public:
     vector<int> sortedSquares(vector<int>& n) 
     {   int f=-1;
         for(int i=0;i<n.size();i++)
-        {
-            n[i]=pow(n[i],2);
-        }
+        n[i]=pow(n[i],2);
         stack<int>s;
         for(int i=0;i<n.size()-1;i++)
-        {
-            if(n[i]>=n[i+1])
-            {
-                s.push(n[i]);
-            }
-            else
+        {if(n[i]>=n[i+1])
+            s.push(n[i]);
+          else
             { f=i;
                 break;}
         }
@@ -35,9 +30,8 @@ public:
                 v.push_back(s.top());
                 s.pop();
             }
-            while(f<n.size()){
+            while(f<n.size())
                  v.push_back(n[f++]);
-            }
              return v;
         }
         reverse(n.begin(),n.end());
