@@ -1,7 +1,7 @@
 class Solution {
 public:
     vector<int> sortedSquares(vector<int>& n) 
-    {   int f=0;
+    {   int f=-1;
         for(int i=0;i<n.size();i++)
         {
             n[i]=pow(n[i],2);
@@ -18,7 +18,7 @@ public:
                 break;}
         }
      vector<int>v;
-        if(f!=0)
+        if(f!=-1)
         {
             while(s.size()&&f<n.size())
             {
@@ -39,8 +39,8 @@ public:
             }
              return v;
         }
-       // reverse(n.begin(),n.end());
-        sort(n.begin(),n.end());
+       reverse(n.begin(),n.end());
+        //sort(n.begin(),n.end());
         return n;
     }
 };
