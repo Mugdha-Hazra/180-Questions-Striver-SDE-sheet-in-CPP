@@ -10,21 +10,18 @@
  */
 class Solution {
 public:
-    ListNode* removeNthFromEnd(ListNode* head, int n)
-    {
-        ListNode *start=new ListNode();
-        start->next=head;
-        ListNode* fast=start;
-        ListNode* slow=start;
-        for(int i=1;i<=n;++i)
-            fast=fast->next;
-        while(fast->next!=NULL)
+    ListNode* removeNthFromEnd(ListNode* head, int n) {
+        ListNode *s=new ListNode();//constructing an another linklist
+        s->next=head; //assigning its next to head
+        ListNode*p=s,*q=s; //rest all is the game of slow and fast pointer
+        for(int i=0;i<n;i++)
+        p=p->next;
+        while(p->next!=NULL)
         {
-            fast=fast->next;
-            slow=slow->next;
+            p=p->next;
+            q=q->next;
         }
-        slow->next=slow->next->next;
-        return start->next;
-        
+        q->next=q->next->next;
+        return s->next;
     }
 };
