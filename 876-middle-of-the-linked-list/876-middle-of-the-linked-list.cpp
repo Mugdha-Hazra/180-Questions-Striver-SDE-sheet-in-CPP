@@ -15,8 +15,7 @@ public:
         ListNode*p=head,*q=head;
         while(p!=NULL&&p->next!=NULL)
         {
-            p=p->next;
-            p=p->next;
+            p=p->next->next;
             q=q->next;
             
         }
