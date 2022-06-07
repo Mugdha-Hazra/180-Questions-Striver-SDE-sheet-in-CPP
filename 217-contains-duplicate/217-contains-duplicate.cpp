@@ -1,6 +1,9 @@
 class Solution {
 public:
-    bool containsDuplicate(vector<int>& nums) {
-        return(set<int>(nums.begin(), nums.end())).size() != nums.size();
+    bool containsDuplicate(vector<int>& n) {
+        set<int>s;
+        for(auto x:n)
+            s.insert(x);
+        return s.size()!=n.size();
     }
 };
