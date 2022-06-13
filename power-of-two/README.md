@@ -1,3 +1,4 @@
+[Discussion Post (created on 13/5/2022 at 8:11)](https://leetcode.com/problems/power-of-two/discuss/2145136/C%2B%2B-solution-oror-2-amazing-approaches-oror-Recursion-%2BBitwise)  
 <h2>231. Power of Two</h2><h3>Easy</h3><hr><div><p>Given an integer <code>n</code>, return <em><code>true</code> if it is a power of two. Otherwise, return <code>false</code></em>.</p>
 
 <p>An integer <code>n</code> is a power of two, if there exists an integer <code>x</code> such that <code>n == 2<sup>x</sup></code>.</p>
