@@ -1,3 +1,4 @@
+[Discussion Post (created on 18/5/2022 at 10:56)](https://leetcode.com/problems/running-sum-of-1d-array/discuss/2164586/C%2B%2B-oror-Runtime%3A-0-ms-faster-than-100.00-of-C%2B%2B)  
 <h2>1480. Running Sum of 1d Array</h2><h3>Easy</h3><hr><div><p>Given an array <code>nums</code>. We define a running sum of an array as&nbsp;<code>runningSum[i] = sum(nums[0]…nums[i])</code>.</p>
 
 <p>Return the running sum of <code>nums</code>.</p>
