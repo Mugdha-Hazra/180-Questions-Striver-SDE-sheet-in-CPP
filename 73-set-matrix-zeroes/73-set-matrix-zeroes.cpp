@@ -15,9 +15,9 @@ public:
                 break;
             } 
         }
-        for (int i = 1; i < m.size(); i++) { //check except the first row and column
-            for (int j = 1; j < m[0].size(); j++) 
-                if (m[i][j] == 0) {
+        for(int i = 1; i < m.size(); i++) { //check except the first row and column
+            for(int j = 1; j < m[0].size(); j++) 
+                if(m[i][j] == 0) {
                     m[i][0] = 0;
                     m[0][j] = 0;
                 }
