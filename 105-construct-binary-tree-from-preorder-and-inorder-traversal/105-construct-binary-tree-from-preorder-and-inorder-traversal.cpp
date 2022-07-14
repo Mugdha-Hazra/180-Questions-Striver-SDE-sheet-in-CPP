@@ -10,25 +10,29 @@
  * };
  */
 class Solution {
+    private:
+    unordered_map<int, int> mp;
+    int find_index(int x){
+        return mp[x];
+    }
+    TreeNode * createTree(int start, int end, vector<int>& pre, int &i){
+         if(start > end || i == pre.size())
+            return NULL;
+            TreeNode *temp = new TreeNode(pre[i]);
+            int idx = find_index(pre[i]);
+            i++;
+            temp -> left = createTree( start, idx - 1, pre, i);
+            temp -> right = createTree(idx + 1, end, pre, i);
+            return temp;
+    }
+    
 public:
-    int preInd=0;
-TreeNode *buildTree(vector<int> &preorder, vector<int> &inorder) {
-    return createTree(preorder,inorder,0,inorder.size() - 1);
-}
-TreeNode* createTree(vector<int>& preorder, vector<int>& inorder,int start, int end){
-    if(start > end){
-        return NULL;
-    }
-    TreeNode* node=new TreeNode(preorder[preInd++]);
-    int pos;
-    for(int i=start;i<=end;i++){
-        if(inorder[i]==node->val){
-            pos=i;
-            break;
+    TreeNode* buildTree(vector<int>& pre, vector<int>& in) {
+        mp.clear();
+        for(int i = 0; i < in.size(); i++){
+            mp[in[i]] = i;
         }
+        int i = 0;
+        return createTree(0, pre.size() - 1, pre, i);
     }
-    node->left =createTree(preorder, inorder,start,pos-1);
-    node->right =createTree(preorder, inorder, pos+1,end);
-    return node;
-}
 };
