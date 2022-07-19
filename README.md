@@ -12,3 +12,6 @@ If you are a newbie in coding and wanna do CP then first solve this DSA question
 ----------------------------------------------
 (*180 Question* approx 1 months if done dedicatedly for atleast *10 hours per day!*)
 # link : https://docs.google.com/document/d/1SM92efk8oDl8nyVw8NHPnbGexTS9W-1gmTEYfEurLWQ/edit
+
+
+The repository contains solutions to various problems on leetcode. The code is merely a snippet (as solved on LeetCode) & hence is not executable in a c++ compiler. The code written is purely original and completely my own.
