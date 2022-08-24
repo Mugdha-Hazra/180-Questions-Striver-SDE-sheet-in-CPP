@@ -12,3 +12,5 @@ If you are a newbie in coding and wanna do CP then first solve this DSA question
 ----------------------------------------------
 (*180 Question* approx 1 months if done dedicatedly for atleast *10 hours per day!*)
 # link : https://docs.google.com/document/d/1SM92efk8oDl8nyVw8NHPnbGexTS9W-1gmTEYfEurLWQ/edit
+
+also given A-z of striver sheet
