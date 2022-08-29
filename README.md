@@ -1,4 +1,6 @@
 ## Striver sheet link :
+https://takeuforward.org/strivers-a2z-dsa-course/strivers-a2z-dsa-course-sheet-2/
+
 https://takeuforward.org/interviews/strivers-sde-sheet-top-coding-interview-problems/
 (Best place for exploring the inner you before placements.)
 
