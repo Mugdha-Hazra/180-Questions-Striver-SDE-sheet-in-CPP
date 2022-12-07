@@ -92,23 +92,40 @@ struct Node {
 */
 class Solution {
   public:
-    // Return the Kth smallest element in the given BST
-    vector<int>v;
-    void inorderTraversal(Node *root,vector<int>&v)
+    int c = 0;
+
+    int ans = -1;
+
+    void solve(Node* root,int K)
+
     {
-        if(root==NULL)
-        return;
-        if(root->left) inorderTraversal(root->left,v);
-        v.push_back(root->data);
-        if(root->right) inorderTraversal(root->right,v);
+
+        if(root==NULL) return;
+
+       
+
+        solve(root->left,K);
+
+        c++;
+
+        if(c==K)
+
+        {
+
+            ans = root->data;
+
+        }
+
+        solve(root->right,K);
+
     }
-    int KthSmallestElement(Node *root, int k) {
-        inorderTraversal(root,v);
-        if(k>v.size())
-        return -1;
-        // for(int i=0;i<v.size();i++)
-        // cout<<v[i]<<":";
-        return v[k-1];
+
+    int KthSmallestElement(Node *root, int K) {
+
+        solve(root,K);
+
+        return ans;
+
     }
 };
 
