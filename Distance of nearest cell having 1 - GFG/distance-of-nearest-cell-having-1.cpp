@@ -6,66 +6,49 @@ using namespace std;
 class Solution 
 {
     public:
-    vector<vector<int>> nearest(vector<vector<int>>grid) {
-    int n = grid.size(), m = grid[0].size();
-    
-    vector<vector<int> > v(n, vector<int>(m, INT_MAX));
-    
-    if(n == 1 && m == 1) {
-        if(grid[0][0] == 1) 
-            v[0][0] = 0;
-            
-        return v;
-    }
-    
-    vector<vector<bool> > vis(n, vector<bool>(m, 0));
-    
-    queue<int> q;
-    
-    for(int i = 0; i < n; ++i) {
-        for(int j = 0; j < m; ++j) {
-            if(grid[i][j] == 1) {
-                q.push(i * m + j);
-                vis[i][j] = 1;
-                v[i][j] = 0;
-            }
-        }
-    }
-    
-    vector<vector<int> > dirs = {
-        {1, 0},
-        {0, 1},
-        {-1, 0},
-        {0, -1}
-    };
-    
-    int level = 1;
-    
-    while(!q.empty()) {
-        int size = q.size();
-        
-        while(size--) {
-            int currCell = q.front(); q.pop();
-            int currX = currCell / m;
-            int currY = currCell % m;
-            
-            for(int i = 0; i < 4; ++i) {
-                int nextX = currX + dirs[i][0];
-                int nextY = currY + dirs[i][1];
-                if(nextX >= 0 && nextY >= 0 && nextX < n && nextY < m) {
-                    if(!vis[nextX][nextY] && grid[nextX][nextY] == 0) {
-                        v[nextX][nextY] = level;
-                        vis[nextX][nextY] = true;
-                        q.push(nextX * m + nextY);
-                    }
-                }
-            }
-        }
-        ++level;
-    }
-    
-    return v;
-}
+    vector<vector<int>>nearest(vector<vector<int>>grid)
+	{
+	    int n=grid.size();
+	    int m=grid[0].size();
+	    vector<vector<int>>vis(n, vector<int>(m,0));
+	    vector<vector<int>>dist(n, vector<int>(m,0));
+	    queue <pair<pair<int,int>,int>>q;
+	    for(int i=0;i<n;i++)
+	    {
+	        for(int j=0;j<m;j++)
+	        {
+	            if(grid[i][j]==1)
+	            {
+	                q.push({{i,j},0});
+	                vis[i][j]=1;
+	            }
+	            else{
+	                vis[i][j]=0;
+	            }
+	        }
+	    }
+	    int delrow[]={-1,0,1,0};
+	    int delcol[]={0,1,0,-1};
+	    while(!q.empty())
+	    {
+	        int r=q.front().first.first;
+	        int c=q.front().first.second;
+	        int s=q.front().second;
+	        q.pop();
+	        dist[r][c]=s;
+	        for(int i=0;i<4;i++)
+	        {
+	            int newRow=r+delrow[i];
+	            int newCol=c+delcol[i];
+	            if(newRow>=0&&newCol>=0&&newRow<n&&newCol<m&&vis[newRow][newCol]==0)
+	            {
+	                vis[newRow][newCol]=1;
+	                q.push({{newRow,newCol},s+1});
+	            }
+	        }
+	    }
+	    return dist;
+	}
 };
 
 //{ Driver Code Starts.
