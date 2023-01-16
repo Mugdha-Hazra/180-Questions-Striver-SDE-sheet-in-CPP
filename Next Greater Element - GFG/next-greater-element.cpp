@@ -13,49 +13,21 @@ class Solution {
   using ll = long long;
 
     vector<long long> nextLargerElement(vector<long long> &arr, int n){
-
-        
-
         vector<ll> sol(n);
-
-        
-
         stack<ll> st;
-
-        
-
         for(int i=0; i<n; i++){
-
-            
-
             while(!st.empty() && arr[i] > arr[st.top()]){
-
                 sol[st.top()] = arr[i];
-
                 st.pop();
-
             }
-
             st.push(i);
-
         }
-
-        
-
         while(!st.empty()){
-
             sol[st.top()] = -1;
-
             st.pop();
-
         }
-
-        
-
         return sol;
-
     }
-
 };
 
 //{ Driver Code Starts.
