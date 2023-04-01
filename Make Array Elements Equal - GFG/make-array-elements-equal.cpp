@@ -9,8 +9,7 @@ using namespace std;
 
 class Solution {
   public:
-    long long int minOperations(int t) {
-        long long int n=t;
+    long long int minOperations(long long int n) {
         if(n%2==0)
         return (n/2)*(n/2);
         return ((n-1)/2)*((n-1)/2)+((n-1)/2);
