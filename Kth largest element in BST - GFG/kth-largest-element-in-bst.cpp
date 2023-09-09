@@ -1,4 +1,4 @@
-// { Driver Code Starts
+//{ Driver Code Starts
 #include <bits/stdc++.h>
 using namespace std;
 
@@ -79,7 +79,7 @@ Node* buildTree(string str)
 }
 
 
- // } Driver Code Ends
+// } Driver Code Ends
 /*The Node structure is defined as
 struct Node {
     int data;
@@ -96,22 +96,33 @@ struct Node {
 // return the Kth largest element in the given BST rooted at 'root'
 class Solution
 {
-   public:
-   void inorder(Node*root,vector<int>&v){
-       if(root==NULL) return;
-       inorder(root->left,v);
-       v.push_back(root->data);
-       inorder(root->right,v);
-   }
-   int kthLargest(Node *root, int K)
-   {
-       vector<int>v;
-       inorder(root,v);
-       return v[v.size()-K];
-   }
+    public:
+    priority_queue<int,vector<int>,greater<int>> pq;
+    void ok(Node *root,int k)
+    {
+        if(root==NULL)
+        {
+            return ;
+        }
+        ok(root->left,k);
+        pq.push(root->data);
+        if(pq.size()>k)
+        {
+            pq.pop();
+        }
+        ok(root->right,k);
+    }
+    int kthLargest(Node *root, int k)
+    {
+        //Your code here
+        ok(root,k);
+        return pq.top();
+    }
 };
 
-// { Driver Code Starts.
+
+
+//{ Driver Code Starts.
 
 int main()
 {
@@ -133,4 +144,5 @@ int main()
         cout << ob.kthLargest( head, k ) << endl;
     }
     return 1;
-}  // } Driver Code Ends
+}
+// } Driver Code Ends
